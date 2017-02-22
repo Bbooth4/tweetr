@@ -35,7 +35,6 @@
   margin: 0%;
   padding-top: 14px; 
   text-align: left;
-  /*float: left;*/
 }
 
 .tweeted-tweets header .account {
@@ -69,12 +68,12 @@
 
 .tweeted-tweets footer .flags {
   margin: 0.5% 2.5% 0.5% 1.5%; 
-  transition: 500; 
+  transition: 400ms; 
   visibility: hidden; 
   float: right; 
 }
 
 .tweeted-tweets:hover footer .flags {
+  transition: 300ms; 
   visibility: visible; 
-  transition: 300; 
 }
