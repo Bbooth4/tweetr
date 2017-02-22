@@ -10,7 +10,18 @@ const app           = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// const db;
+
+// MongoClient.connect('your-mongodb-url', (err, database) => {
+//   if (err) return console.log(err)
+//   db = database
+//   app.listen(3000, () => {
+//     console.log('listening on 3000')
+//   })
+// })
+
 // The in-memory database of tweets. It's a basic object with an array in it.
+
 const db = require("./lib/in-memory-db");
 
 // The `data-helpers` module provides an interface to the database of tweets.

@@ -1,4 +1,9 @@
 $(() => {
+  function escape(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
+  }
 
   function createTweetElement(tweet) {
     const personName = tweet.user.name;
@@ -46,6 +51,7 @@ $(() => {
 
   $('form').submit((event) => {
     event.preventDefault();
+    $('#create-tweet').val(escape($('#create-tweet').val()));  
     const newTweet = $(event.target).serialize();
     if ($('#create-tweet').val().length === 0 || $('#create-tweet').val().length === '') {
       alert('You did not input any information!');
@@ -57,6 +63,7 @@ $(() => {
         url: '/tweets',
         data: newTweet,
       }).done((result) => {
+        
         loadTweets();
         $('#create-tweet').val(''); 
         $('.counter').text(140);
