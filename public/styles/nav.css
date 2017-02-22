@@ -21,3 +21,19 @@
     padding: 2.5% 0%; 
     float: left;
 }
+
+#nav-bar #compose {
+    margin-top: 12px; 
+    background-color: snow;
+    padding: 2% 1%; 
+    width: 12%;
+    border: 1px solid #5466f2; 
+    border-radius: 5px; 
+    text-align: center; 
+    float: right; 
+}
+
+
+#nav-bar #compose:hover {
+    border: 2px solid #5466f2; 
+}
