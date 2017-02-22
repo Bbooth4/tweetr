@@ -69,5 +69,12 @@
 
 .tweeted-tweets footer .flags {
   margin: 0.5% 2.5% 0.5% 1.5%; 
+  transition: 500; 
+  visibility: hidden; 
   float: right; 
+}
+
+.tweeted-tweets:hover footer .flags {
+  visibility: visible; 
+  transition: 300; 
 }
