@@ -24,10 +24,10 @@ body {
 
 .container {
   background: snow; 
-  margin: 0% 33.3%; 
-  padding-top: 140px;
+  margin: 0% auto; 
+  padding-top: 100px;
   width: 450px; 
-  height: 400px; 
+  height: auto; 
 }
 
 /*

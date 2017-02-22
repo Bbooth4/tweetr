@@ -4,19 +4,20 @@
     background-color: #00a087; 
     padding: 0em 2em; 
     position: fixed; 
+    z-index: 100; 
 }
 
 #nav-bar .logo {
     margin-bottom: -4px;
+    margin-right: 10px; 
     height: 80px; 
     width: 80px;
-    padding-right: 10px; 
     float: left; 
 }
 
 #nav-bar .header {
     color: #e8fdff;
     font-size: 200%; 
-    padding-top: 20px; 
+    padding: 2.5% 0%; 
     float: left;
 }

@@ -1,15 +1,16 @@
 .container .new-tweet {   
     background: lightblue;
-    height: 58%;
+    height: 145px;
     width: 90%; 
     padding: 2% 3%;
     margin-left: 5%; 
+    margin-bottom: 5%; 
     border-radius: 5px;
     text-align: center; 
     border: 1px solid #5466f2;
 }
 
-.container .new-tweet  h2 {
+.container .new-tweet h2 {
     margin: 0px;
     width: 100%; 
     margin-bottom: 1%; 
@@ -17,7 +18,7 @@
     text-align: left; 
 }
 
-.container .new-tweet form textarea {
+.container .new-tweet form #create-tweet {
     width: 100%; 
     padding: 2%; 
     margin: 1% 0%; 
