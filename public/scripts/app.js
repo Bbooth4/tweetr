@@ -5,12 +5,46 @@ $(() => {
     return div.innerHTML;
   }
 
+  function daysAgoCalc(current, previous) {
+    let minutes = 60 * 1000;
+    let hours = minutes * 60;
+    let days = hours * 24;
+    let months = days * 30;
+    let years = days * 365;
+    let elapsedTime = current - previous;
+    if (elapsedTime < minutes) {
+        return `Less than a minute ago`;
+    } else if (elapsedTime < hours) {
+        return Math.round(elapsedTime / hours) < 1 ? 
+        `${Math.round(elapsedTime / hours * 60)} minutes ago` :
+        `${Math.round(elapsedTime / hours)} minute ago`;
+    } else if (elapsedTime < days ) {
+        return Math.round(elapsedTime / hours) === Math.round(1) ?
+        `${Math.round(elapsedTime / hours)} hour ago` :
+        `${Math.round(elapsedTime / hours)} hours ago`;
+    } else if (elapsedTime < months) {
+        return Math.round(elapsedTime / days) === Math.round(1) ?
+        `${Math.round(elapsedTime / days)} day ago` :
+        `${Math.round(elapsedTime / days)} days ago`;
+    } else if (elapsedTime < years) {
+        return Math.round(elapsedTime / months) === Math.round(1) ?
+        `${Math.round(elapsedTime / months)} month ago` :
+        `${Math.round(elapsedTime / months)} months ago`;
+    } else {
+        return Math.round(elapsedTime / years) === Math.round(1) ?
+        `${Math.round(elapsedTime / years)} year ago` :
+        `${Math.round(elapsedTime / years)} years ago`;
+    }
+  }
+
   function createTweetElement(tweet) {
     const personName = tweet.user.name;
     const avatar = tweet.user.avatars.small;
     const account = tweet.user.handle;
     const content = tweet.content.text;
-    const daysAgo = new Date(tweet.created_at).toLocaleString();
+    let dayCreated = tweet.created_at;
+    let today = new Date(); 
+    const daysAgo = daysAgoCalc(today, dayCreated); 
     const $tweet = `
       <article class="tweeted-tweets">
         <header>
@@ -41,7 +75,6 @@ $(() => {
     }).fail(console.error);
   }; 
 
-
   function renderTweets(tweets) {
     $('.tweet-wrapper').empty();
     return tweets.map(tweet => $('.tweet-wrapper').prepend(createTweetElement(tweet)) ); 
@@ -51,7 +84,7 @@ $(() => {
 
   $('form').submit((event) => {
     event.preventDefault();
-    $('#create-tweet').val(escape($('#create-tweet').val()));  
+    $('#create-tweet').val(escape($('#create-tweet').val()));
     const newTweet = $(event.target).serialize();
     if ($('#create-tweet').val().length === 0 || $('#create-tweet').val().length === '') {
       alert('You did not input any information!');
@@ -63,7 +96,6 @@ $(() => {
         url: '/tweets',
         data: newTweet,
       }).done((result) => {
-        
         loadTweets();
         $('#create-tweet').val(''); 
         $('.counter').text(140);

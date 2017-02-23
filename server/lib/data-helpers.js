@@ -7,21 +7,37 @@ const simulateDelay = require("./util/simulate-delay");
 module.exports = function makeDataHelpers(db) {
   return {
 
-    // Saves a tweet to `db`
+    // Saves a tweet to `db` 
     saveTweet: function(newTweet, callback) {
-      simulateDelay(() => {
-        db.tweets.push(newTweet);
-        callback(null, true);
+      // simulateDelay(() => {
+      db.collection('tweets').insertOne(tweet, (err, tweets) => {
+        if (err) {
+          console.log('Failed to retreive tweets.');
+          return callback('Failed to retreive tweets.');
+          // db.tweets.push(newTweet);
+        } else {
+          callback(null, true);
+        }
       });
     },
 
     // Get all tweets in `db`, sorted by newest first
     getTweets: function(callback) {
-      simulateDelay(() => {
-        const sortNewestFirst = (a, b) => a.created_at - b.created_at;
-        callback(null, db.tweets.sort(sortNewestFirst));
-      });
+      // simulateDelay(() => {
+        db.collection("tweets").find().toArray((err, tweets) => {
+          if (err) {
+            console.log('Failed to retreive tweets.');
+            return callback(err);
+          } else {
+          // callback(null, tweets);
+            // const sortNewestFirst = (a, b) => a.created_at - b.created_at;
+            callback(null, tweets);
+          }
+        });
     }
-
-  };
+  }
+  // return {
+  //   saveTweet: saveTweet, 
+  //   getTweets: getTweets
+  // }
 }
