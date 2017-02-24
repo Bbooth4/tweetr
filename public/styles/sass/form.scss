@@ -1,0 +1,26 @@
+@import 'base.scss'; 
+
+#forms {
+  position: relative;
+  width: 90%;
+  height: 168px;
+  border-radius: 5px; 
+  display: flex; 
+  justify-content: center; 
+  background: lightblue; 
+  border: 1px solid $deep-blue; 
+  margin: 30px auto; 
+  z-index: 99; 
+  #register {
+    input {
+      color: $deep-blue; 
+      border: 1px solid $deep-blue; 
+      border-radius: 2px; 
+    }
+    .submit:hover {
+      color: blue; 
+      border: 1px solid blue; 
+      border-radius: 5px; 
+    }
+  }
+}

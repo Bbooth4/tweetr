@@ -3,6 +3,8 @@
  * https://css-tricks.com/international-box-sizing-awareness-day/
  * Do not modify these two selectors, please
  */
+@import 'base.scss';
+
 html {
   box-sizing: border-box;
 }
@@ -32,7 +34,7 @@ body {
 
 @media (max-width:490px) {
   .container {
-    width: 300px; ; 
+    width: 300px;  
     transition: 300ms; 
   }
 }

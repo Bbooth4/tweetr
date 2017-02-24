@@ -1,7 +1,9 @@
+@import 'base.scss';
+
 #nav-bar {
   height: 80px;
   width: 100%;
-  background-color: #00a087;
+  background-color: $emerald;
   padding: 0em 2em;
   position: fixed;
   z-index: 100; 
@@ -23,15 +25,20 @@
     margin-top: 12px;
     background-color: snow;
     padding: 18px 1%;
-    border: 1px solid #5466f2;
+    border: 1px solid $deep-blue;
     border-radius: 5px;
     cursor: pointer;
     text-align: center;
     float: right; 
   }
   #compose:hover {
-    border: 2px solid #5466f2;
-    color: #00a087; 
+    border: 2px solid $deep-blue;
+    color: $emerald; 
+  }
+  #register-button {
+    @extend #compose;
+    padding: 2px 1%;
+    margin-right: 1%; 
   }
 }
 
@@ -45,7 +52,7 @@
       border-radius: 5px;
       padding: 10px 3px;
       background-color: snow; 
-      border: 1px solid #5466f2;
+      border: 1px solid $deep-blue;
       top: -10px; 
       margin: 0px; 
       visibility: visible; 
@@ -74,7 +81,7 @@
       border-radius: 5px;
       padding: 10px 3px;
       background-color: snow; 
-      border: 1px solid #5466f2;
+      border: 1px solid $deep-blue;
       top: -50px; 
       margin: 0px; 
     }
