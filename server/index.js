@@ -1,11 +1,21 @@
 "use strict";
 
-const PORT          = 8080;
-const express       = require("express");
-const bodyParser    = require("body-parser");
-const app           = express();
-const sass          = require('node-sass');
+const PORT            = 8080;
+const express         = require("express");
+const bodyParser      = require("body-parser");
+const sassMiddleware  = require('node-sass-middleware');
+const app             = express();
 
+app.use(sassMiddleware({
+    /* Options */
+    src: 'public/styles/sass',
+    dest: 'public/styles',
+    debug: true,
+    outputStyle: 'compressed',
+    prefix:  '/styles'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));
+
+// app.use('/public', express.static('/public/styles/sass'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 

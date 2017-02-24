@@ -16,6 +16,7 @@ module.exports = function makeDataHelpers(db) {
           }
         });
       },
+      
       saveTweet: function(newTweet, callback) {
         db.collection("tweets").insertOne(newTweet, (err, result) => {
          if (err) {

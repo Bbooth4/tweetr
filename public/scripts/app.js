@@ -15,7 +15,7 @@ $(() => {
     if (elapsedTime < minutes) {
         return `Less than a minute ago`;
     } else if (elapsedTime < hours) {
-        return Math.round(elapsedTime / hours) < 1 ? 
+        return Math.round(elapsedTime / hours) <= 1 ? 
         `${Math.round(elapsedTime / hours * 60)} minutes ago` :
         `${Math.round(elapsedTime / hours)} minute ago`;
     } else if (elapsedTime < days ) {
