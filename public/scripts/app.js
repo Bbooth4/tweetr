@@ -75,14 +75,43 @@ $(() => {
     }).fail(console.error);
   }; 
 
+
   function renderTweets(tweets) {
     $('.tweet-wrapper').empty();
     return tweets.map(tweet => $('.tweet-wrapper').prepend(createTweetElement(tweet)) ); 
   }
 
+   function createUser() {
+     console.log('ajax get')
+    $.ajax({
+      method: 'GET',
+      url: '/register'
+    }).done((data) => {
+      return data; 
+    }).fail(console.error);
+  }; 
+
+  $('#register').submit((event) => {
+    console.log(event.target);  
+    event.preventDefault(); 
+    const user = { 
+      email :$('#email')[0].value, 
+      password: $('#password')[0].value }; 
+    console.log(user)
+    $.ajax({
+      method: 'POST', 
+      url: '/register',
+      data: user,
+    }).done((result) => { 
+      console.log(result)
+      console.log('end of register ajax POST')
+      createUser(result); 
+    }).fail(console.error);
+  });
+
   loadTweets();
 
-  $('form').submit((event) => {
+  $('.new-tweet-form').submit((event) => {
     event.preventDefault();
     $('#create-tweet').val(escape($('#create-tweet').val()));
     const newTweet = $(event.target).serialize();
@@ -106,5 +135,10 @@ $(() => {
   $('#compose').click((event) => {
     $('.new-tweet').slideToggle('slow', function(){});
     $('#create-tweet').focus();
+  });
+  $('#forms').slideUp(0, function(){}); 
+  $('#register-button').click((event) => {
+    $('#forms').slideToggle('slow', function(){});
+    $('.email').focus();
   });
 });

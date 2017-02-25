@@ -1,0 +1,1 @@
+#forms{position:relative;width:90%;height:168px;border-radius:5px;display:flex;justify-content:center;background:lightblue;border:1px solid #5466f2;margin:30px auto;z-index:99}#forms #register input{color:#5466f2;border:1px solid #5466f2;border-radius:2px}#forms #register .submit:hover{color:blue;border:1px solid blue;border-radius:5px}
